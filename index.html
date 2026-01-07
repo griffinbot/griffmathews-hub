@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Griff Mathews</title>
+    <meta name="description" content="Projects and web apps by Griff Mathews." />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="wrap">
+      <nav class="nav">
+        <a class="brand" href="/">Griff Mathews</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+
+      <section class="hero">
+        <h1>Projects, apps, and experiments.</h1>
+        <p class="sub">
+          This is my hub. Each project lives on its own subdomain so I can ship fast without breaking everything.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#projects">View projects</a>
+          <a class="btn" href="#contact">Contact</a>
+        </div>
+      </section>
+    </header>
+
+    <main class="wrap">
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+
+        <div class="grid">
+          <a class="tile" href="https://weather.griffmathews.com" target="_blank">
+            <div class="tile-title">Weather Tool</div>
+            <div class="tile-desc">Forecast + aviation-style reporting.</div>
+          </a>
+
+          <a class="tile" href="https://lab.griffmathews.com" target="_blank">
+            <div class="tile-title">Lab</div>
+            <div class="tile-desc">Experiments and prototypes.</div>
+          </a>
+
+          <a class="tile" href="https://github.com" target="_blank">
+            <div class="tile-title">GitHub</div>
+            <div class="tile-desc">Code and repos.</div>
+          </a>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p class="sub">Want to collaborate or talk shop?</p>
+
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:griffmathews@icloud.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+        </div>
+      </section>
+
+      <footer class="footer">
+        © <span id="y"></span> Griff Mathews
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
