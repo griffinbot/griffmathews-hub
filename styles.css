@@ -1,87 +1,238 @@
-:root{
-  --bg:#0b0c10;
-  --card:#11131a;
-  --text:#e9ecf1;
-  --muted:#aab1bd;
-  --line:rgba(255,255,255,.12);
-  --accent:#7c5cff;
-  --shadow: 0 12px 40px rgba(0,0,0,.35);
-  --radius:16px;
-  --max:980px;
-  --pad:24px;
-  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-}
-*{ box-sizing:border-box; }
-body{
-  margin:0;
-  font-family:var(--font);
-  background: radial-gradient(900px 600px at 20% 0%, rgba(124,92,255,.18), transparent 60%),
-              var(--bg);
-  color:var(--text);
-}
-a{ color:inherit; text-decoration:none; }
-.wrap{ max-width:var(--max); margin:0 auto; padding:var(--pad); }
+:root {
+  --bg: #0e1117;
+  --surface: #161b22;
+  --surface-soft: #1c2128;
+  --text: #f3f4f6;
+  --muted: #9ca3af;
+  --line: rgba(255, 255, 255, 0.1);
 
-.nav{
-  display:flex; justify-content:space-between; align-items:center;
-  border-bottom:1px solid var(--line);
-  padding-bottom:14px;
-}
-.brand{ font-weight:800; }
-.nav-links{ display:flex; gap:14px; }
-.nav-links a{ color:var(--muted); }
-.nav-links a:hover{ color:var(--text); }
+  --accent: #7c7cff;
+  --accent-soft: rgba(124, 124, 255, 0.18);
 
-.hero{ padding:26px 0 10px; }
-h1{ margin:0 0 10px; font-size:42px; line-height:1.1; }
-h2{ margin:0 0 14px; font-size:22px; }
-.sub{ color:var(--muted); line-height:1.6; margin:0 0 14px; }
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  --shadow-hover: 0 18px 60px rgba(0, 0, 0, 0.55);
 
-.cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin:12px 0 0; }
-.btn{
-  padding:10px 14px;
-  border-radius:12px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.03);
-  font-weight:650;
-}
-.btn:hover{ background:rgba(255,255,255,.06); }
-.btn.primary{
-  border-color:rgba(124,92,255,.55);
-  background:rgba(124,92,255,.16);
+  --radius: 16px;
+  --max: 980px;
+  --pad: 24px;
+
+  --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial;
 }
 
-.section{ padding:26px 0 10px; }
-
-.grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0,1fr));
-  gap:14px;
+* {
+  box-sizing: border-box;
 }
-.tile{
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  padding:16px;
-  background:rgba(255,255,255,.03);
-  box-shadow:var(--shadow);
-  transition: transform .08s ease, background .08s ease;
-}
-.tile:hover{ transform: translateY(-2px); background:rgba(255,255,255,.05); }
-.tile-title{ font-weight:850; margin-bottom:8px; }
-.tile-desc{ color:var(--muted); line-height:1.5; margin-bottom:12px; }
-.tile-link{ font-weight:700; }
-.tile-link.muted{ color:rgba(170,177,189,.85); }
-.tile.disabled{ opacity:.6; }
-.tile.disabled:hover{ transform:none; background:rgba(255,255,255,.03); }
-
-.footer{
-  margin-top:30px;
-  border-top:1px solid var(--line);
-  padding:18px 0 30px;
-  color:rgba(170,177,189,.9);
+html,
+body {
+  height: 100%;
 }
 
-@media (max-width: 760px){
-  .grid{ grid-template-columns: 1fr; }
-  h1{ font-size:34px; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text);
+  background: radial-gradient(
+      900px 600px at 18% 0%,
+      rgba(124, 124, 255, 0.26),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 600px at 85% 10%,
+      rgba(99, 102, 241, 0.18),
+      transparent 60%
+    ),
+    var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: var(--pad);
+}
+
+/* ---------- NAV ---------- */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-weight: 900;
+  letter-spacing: 0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  color: var(--muted);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  padding: 28px 0 14px;
+}
+
+h1 {
+  margin: 0 0 12px;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+
+.sub {
+  color: var(--muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+  max-width: 720px;
+}
+
+.cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+/* ---------- BUTTONS ---------- */
+.btn {
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.02)
+  );
+  color: var(--text);
+  font-weight: 750;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.btn:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.07),
+    rgba(255, 255, 255, 0.03)
+  );
+}
+
+.btn.primary {
+  border-color: rgba(124, 124, 255, 0.55);
+  background: linear-gradient(
+    180deg,
+    rgba(124, 124, 255, 0.3),
+    rgba(124, 124, 255, 0.16)
+  );
+}
+
+.btn.primary:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(124, 124, 255, 0.4),
+    rgba(124, 124, 255, 0.22)
+  );
+}
+
+/* ---------- SECTIONS ---------- */
+.section {
+  padding: 26px 0 10px;
+}
+
+/* ---------- GRID / CARDS ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.tile {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.015)
+    ),
+    var(--surface);
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    border-color 0.12s ease;
+}
+
+.tile:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(124, 124, 255, 0.45);
+}
+
+.tile-title {
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.tile-desc {
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.tile-link {
+  margin-top: 12px;
+  font-weight: 800;
+  color: rgba(243, 244, 246, 0.92);
+}
+
+/* Coming soon / disabled cards */
+.tile.disabled {
+  opacity: 0.78;
+  cursor: not-allowed;
+}
+
+.tile.disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow);
+  border-color: var(--line);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  margin-top: 32px;
+  border-top: 1px solid var(--line);
+  padding: 18px 0 30px;
+  color: rgba(156, 163, 175, 0.92);
+  font-size: 14px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 34px;
+  }
 }
