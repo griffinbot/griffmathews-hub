@@ -4,72 +4,203 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Griff Mathews</title>
-    <meta name="description" content="Projects and web apps by Griff Mathews." />
+    <meta name="description" content="Building innovative web apps, automations, and games that solve real problems." />
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
-    <header class="wrap">
-      <nav class="nav">
-        <a class="brand" href="/">Griff Mathews</a>
-        <div class="nav-links">
+    <!-- Top Nav -->
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#top" aria-label="Home">
+          <span class="gm">GM</span>
+        </a>
+
+        <nav class="navlinks" aria-label="Primary">
           <a href="#projects">Projects</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
+          <a href="#updates">Updates</a>
+        </nav>
 
-      <section class="hero">
-        <h1>Projects, apps, and experiments.</h1>
-        <p class="sub">
-          This is my hub. Each project lives on its own subdomain so I can ship fast without breaking everything.
-        </p>
-
-        <div class="cta-row">
-          <a class="btn primary" href="#projects">View projects</a>
-          <a class="btn" href="#contact">Contact</a>
-        </div>
-      </section>
+        <a class="btn btn-dark" href="#signin" aria-label="Sign in (placeholder)">Sign In</a>
+      </div>
     </header>
 
-    <main class="wrap">
-      <section id="projects" class="section">
-        <h2>Projects</h2>
-
-        <div class="grid">
-          <a class="tile" href="https://weather.griffmathews.com" target="_blank">
-            <div class="tile-title">Weather Tool</div>
-            <div class="tile-desc">Forecast + aviation-style reporting.</div>
-          </a>
-
-          <a class="tile" href="https://lab.griffmathews.com" target="_blank">
-            <div class="tile-title">Lab</div>
-            <div class="tile-desc">Experiments and prototypes.</div>
-          </a>
-
-          <a class="tile" href="https://github.com" target="_blank">
-            <div class="tile-title">GitHub</div>
-            <div class="tile-desc">Code and repos.</div>
-          </a>
+    <!-- Hero -->
+    <main id="top" class="hero-wrap">
+      <div class="container hero">
+        <div class="pill">
+          <span class="dot"></span>
+          Available for projects
         </div>
-      </section>
 
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p class="sub">Want to collaborate or talk shop?</p>
+        <h1 class="hero-title">
+          <span class="grad">Griff</span> <span class="grad2">Mathews</span>
+        </h1>
 
-        <div class="cta-row">
-          <a class="btn primary" href="mailto:mathews.griffin97@gmail.com>Email</a>
-          <a class="btn" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-        </div>
-      </section>
+        <p class="hero-sub">
+          Building innovative web apps, automations, and games that solve<br />
+          real problems
+        </p>
 
-      <footer class="footer">
-        © <span id="y"></span> Griff Mathews
-      </footer>
+        <a class="btn btn-primary" href="#projects">
+          View My Work <span class="chev">⌄</span>
+        </a>
+      </div>
+
+      <!-- subtle corner accents like your mock -->
+      <div class="corner corner-left" aria-hidden="true"></div>
+      <div class="corner corner-right" aria-hidden="true"></div>
     </main>
+
+    <!-- What I Build -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-title">
+          <h2>What I Build</h2>
+          <div class="underline"></div>
+        </div>
+
+        <div class="cards3">
+          <article class="card outline-orange">
+            <div class="iconbox orange">〈〉</div>
+            <h3>Web Apps</h3>
+            <p>Full-stack applications built with modern technologies and best practices</p>
+          </article>
+
+          <article class="card outline-blue">
+            <div class="iconbox blue">⚡</div>
+            <h3>Automations</h3>
+            <p>Workflow automations and tools that streamline processes and boost productivity</p>
+          </article>
+
+          <article class="card outline-orange">
+            <div class="iconbox orange">🎮</div>
+            <h3>Games</h3>
+            <p>Interactive experiences and games that engage and entertain users</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Latest Updates -->
+    <section id="updates" class="section section-muted">
+      <div class="container">
+        <div class="section-title">
+          <h2>Latest Updates</h2>
+          <div class="underline"></div>
+          <p class="section-sub">Stay up to date with new projects, releases, and documentation</p>
+        </div>
+
+        <div class="updates">
+          <article class="update highlight">
+            <div class="u-icon orange">🔔</div>
+            <div class="u-body">
+              <div class="u-meta">
+                <span class="tag orange">Announcement</span>
+                <span class="date">Feb 3, 2026</span>
+              </div>
+              <h3>New Portfolio Website Launch</h3>
+              <p>
+                Excited to share my new portfolio showcasing all my projects in web apps, automations, and games.
+                Built for speed and clarity.
+              </p>
+            </div>
+          </article>
+
+          <article class="update">
+            <div class="u-icon blue">📄</div>
+            <div class="u-body">
+              <div class="u-meta">
+                <span class="tag blue">Documentation</span>
+                <span class="date">Jan 28, 2026</span>
+              </div>
+              <h3>Documentation Updates</h3>
+              <p>Added guides for setting up and deploying web applications. More tutorials coming soon.</p>
+            </div>
+          </article>
+
+          <article class="update">
+            <div class="u-icon orange">💡</div>
+            <div class="u-body">
+              <div class="u-meta">
+                <span class="tag orange">Release</span>
+                <span class="date">Jan 20, 2026</span>
+              </div>
+              <h3>New Automation Tool Released</h3>
+              <p>Released a new automation tool that helps streamline workflow processes. Early access testing open.</p>
+            </div>
+          </article>
+
+          <!-- Hidden extras to “load more” -->
+          <article class="update hidden" data-more>
+            <div class="u-icon blue">🧪</div>
+            <div class="u-body">
+              <div class="u-meta">
+                <span class="tag blue">Update</span>
+                <span class="date">Jan 14, 2026</span>
+              </div>
+              <h3>Experiment: New UI System</h3>
+              <p>Started a lightweight component system for faster prototyping across apps.</p>
+            </div>
+          </article>
+
+          <article class="update hidden" data-more>
+            <div class="u-icon orange">🚀</div>
+            <div class="u-body">
+              <div class="u-meta">
+                <span class="tag orange">Build</span>
+                <span class="date">Jan 10, 2026</span>
+              </div>
+              <h3>First App Scaffolded</h3>
+              <p>Project structure is in place — next step is shipping a public MVP under a subdomain.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="center">
+          <button class="btn btn-outline" id="loadMore">Load More Updates</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-brand">griffmathews.com</div>
+          <div class="underline small"></div>
+          <p class="footer-sub">Let’s build something amazing together</p>
+        </div>
+
+        <div>
+          <div class="footer-head">Quick Links</div>
+          <a class="footer-link" href="#projects">Projects</a>
+          <a class="footer-link" href="#updates">Updates</a>
+          <a class="footer-link" href="#blog">Blog</a>
+        </div>
+
+        <div>
+          <div class="footer-head">Connect</div>
+          <a class="footer-link" href="mailto:griffmathews@icloud.com">Email</a>
+          <a class="footer-link" href="https://github.com/" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="footer-link" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        © <span id="y"></span> Griff Mathews. All rights reserved.
+      </div>
+    </footer>
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Simple "Load More" behavior (reveals hidden cards)
+      const btn = document.getElementById("loadMore");
+      btn?.addEventListener("click", () => {
+        document.querySelectorAll("[data-more].hidden").forEach((el) => el.classList.remove("hidden"));
+        btn.style.display = "none";
+      });
     </script>
   </body>
 </html>
