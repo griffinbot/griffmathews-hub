@@ -1,0 +1,269 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Mini Crossword" description="Play a classic mini crossword.">
+  <main class="section mini-wrap">
+    <div class="container mini-crossword">
+      <div class="section-title">
+        <h2>Mini Crossword</h2>
+        <div class="underline"></div>
+      </div>
+
+      <p class="mini-availability">
+        <strong>Puzzle Availability:</strong> Weekday/Saturday minis are available at 10:00 p.m. EST the previous day.
+        Sunday minis are available at 6:00 p.m. EST on Saturday.
+      </p>
+
+      <div class="mini-status" id="miniStatus">Fill the board by solving clues Across and Down.</div>
+
+      <section class="mini-game" aria-label="Mini crossword puzzle">
+        <div class="mini-left">
+          <div class="mini-toolbar">
+            <span class="mini-timer" id="miniTimer">00:00</span>
+            <button class="btn" id="timerToggle" type="button">Pause</button>
+            <button class="btn" id="modeToggle" type="button" aria-pressed="false">Pencil: Off</button>
+          </div>
+
+          <div class="mini-board" id="miniBoard" role="grid" aria-label="Mini crossword board"></div>
+
+          <div class="mini-controls">
+            <button class="btn" id="checkBtn" type="button">Check</button>
+            <button class="btn" id="revealBtn" type="button">Reveal</button>
+            <button class="btn" id="clearBtn" type="button">Clear</button>
+            <button class="btn btn-dark" id="restartBtn" type="button">Restart</button>
+          </div>
+        </div>
+
+        <aside class="mini-clues" aria-label="Crossword clues">
+          <h3>Across</h3>
+          <ol id="acrossClues"></ol>
+
+          <h3>Down</h3>
+          <ol id="downClues"></ol>
+        </aside>
+      </section>
+
+      <p class="mini-help">
+        Keyboard: arrows move • tab/shift+tab jump clues • backspace/delete erase • space toggles direction.
+      </p>
+    </div>
+  </main>
+
+  <script type="module">
+    import {
+      MINI_PUZZLE,
+      buildNumbering,
+      clearPuzzle,
+      createInitialState,
+      enterLetter,
+      eraseCurrent,
+      formatSeconds,
+      getWordCells,
+      isFillableCell,
+      jumpToNextClue,
+      moveCursor,
+      checkAll,
+      revealAll,
+      toggleDirection,
+    } from "../lib/miniCrossword.js";
+
+    const boardEl = document.getElementById("miniBoard");
+    const acrossEl = document.getElementById("acrossClues");
+    const downEl = document.getElementById("downClues");
+    const statusEl = document.getElementById("miniStatus");
+    const timerEl = document.getElementById("miniTimer");
+    const timerToggleEl = document.getElementById("timerToggle");
+    const modeToggleEl = document.getElementById("modeToggle");
+
+    const numbering = buildNumbering(MINI_PUZZLE);
+    let state = createInitialState(MINI_PUZZLE);
+    let elapsed = 0;
+    let timerRunning = true;
+    let pencilMode = false;
+
+    const renderClues = () => {
+      acrossEl.innerHTML = "";
+      downEl.innerHTML = "";
+
+      for (const item of numbering) {
+        if (item.startsAcross && MINI_PUZZLE.clues.across[item.number]) {
+          const li = document.createElement("li");
+          li.textContent = `${item.number}. ${MINI_PUZZLE.clues.across[item.number]}`;
+          li.dataset.row = String(item.row);
+          li.dataset.col = String(item.col);
+          li.dataset.direction = "across";
+          acrossEl.append(li);
+        }
+
+        if (item.startsDown && MINI_PUZZLE.clues.down[item.number]) {
+          const li = document.createElement("li");
+          li.textContent = `${item.number}. ${MINI_PUZZLE.clues.down[item.number]}`;
+          li.dataset.row = String(item.row);
+          li.dataset.col = String(item.col);
+          li.dataset.direction = "down";
+          downEl.append(li);
+        }
+      }
+    };
+
+    const activeWord = () => getWordCells(MINI_PUZZLE, state.cursor.row, state.cursor.col, state.direction);
+
+    const renderBoard = () => {
+      boardEl.innerHTML = "";
+      boardEl.style.gridTemplateColumns = `repeat(${MINI_PUZZLE.grid[0].length}, 1fr)`;
+
+      const wordSet = new Set(activeWord().map(({ row, col }) => `${row}:${col}`));
+
+      for (let row = 0; row < MINI_PUZZLE.grid.length; row += 1) {
+        for (let col = 0; col < MINI_PUZZLE.grid[row].length; col += 1) {
+          const cell = document.createElement("button");
+          cell.type = "button";
+          cell.className = "mini-cell";
+
+          if (!isFillableCell(MINI_PUZZLE, row, col)) {
+            cell.classList.add("blocked");
+            cell.disabled = true;
+          } else {
+            const entry = state.entries[row][col];
+            cell.textContent = entry.value;
+            cell.dataset.row = String(row);
+            cell.dataset.col = String(col);
+
+            const clueNumber = numbering.find((n) => n.row === row && n.col === col)?.number;
+            if (clueNumber) {
+              const badge = document.createElement("span");
+              badge.className = "mini-num";
+              badge.textContent = String(clueNumber);
+              cell.append(badge);
+            }
+
+            if (entry.mode === "pencil") cell.classList.add("pencil");
+            if (entry.checked && !entry.incorrect) cell.classList.add("checked");
+            if (entry.incorrect) cell.classList.add("incorrect");
+            if (entry.revealed) cell.classList.add("revealed");
+            if (wordSet.has(`${row}:${col}`)) cell.classList.add("active-word");
+            if (state.cursor.row === row && state.cursor.col === col) cell.classList.add("active");
+          }
+
+          boardEl.append(cell);
+        }
+      }
+
+      document.querySelectorAll(".mini-clues li").forEach((li) => li.classList.remove("active"));
+      document
+        .querySelector(`.mini-clues li[data-row='${state.cursor.row}'][data-col='${state.cursor.col}'][data-direction='${state.direction}']`)
+        ?.classList.add("active");
+
+      statusEl.textContent = state.completed
+        ? "★ Puzzle complete! Great solve."
+        : `Direction: ${state.direction === "across" ? "Across" : "Down"}`;
+    };
+
+    const refreshTimer = () => {
+      timerEl.textContent = formatSeconds(elapsed);
+      timerToggleEl.textContent = timerRunning ? "Pause" : "Continue";
+    };
+
+    setInterval(() => {
+      if (!timerRunning || state.completed) return;
+      elapsed += 1;
+      refreshTimer();
+    }, 1000);
+
+    boardEl.addEventListener("click", (event) => {
+      const target = event.target.closest("button[data-row][data-col]");
+      if (!target) return;
+      const row = Number(target.dataset.row);
+      const col = Number(target.dataset.col);
+
+      if (state.cursor.row === row && state.cursor.col === col) {
+        toggleDirection(state);
+      } else {
+        state.cursor = { row, col };
+      }
+      renderBoard();
+    });
+
+    const onKey = (event) => {
+      if (event.target && ["INPUT", "TEXTAREA"].includes(event.target.tagName)) return;
+
+      if (/^[a-z]$/i.test(event.key)) {
+        event.preventDefault();
+        enterLetter(MINI_PUZZLE, state, event.key, pencilMode ? "pencil" : "pen");
+      } else if (event.key === "Backspace" || event.key === "Delete") {
+        event.preventDefault();
+        eraseCurrent(MINI_PUZZLE, state);
+      } else if (event.key === " ") {
+        event.preventDefault();
+        toggleDirection(state);
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        state.direction = "down";
+        moveCursor(MINI_PUZZLE, state, -1, 0);
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        state.direction = "down";
+        moveCursor(MINI_PUZZLE, state, 1, 0);
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        state.direction = "across";
+        moveCursor(MINI_PUZZLE, state, 0, -1);
+      } else if (event.key === "ArrowRight") {
+        event.preventDefault();
+        state.direction = "across";
+        moveCursor(MINI_PUZZLE, state, 0, 1);
+      } else if (event.key === "Tab") {
+        event.preventDefault();
+        jumpToNextClue(MINI_PUZZLE, state, event.shiftKey ? -1 : 1);
+      } else {
+        return;
+      }
+
+      renderBoard();
+    };
+
+    document.addEventListener("keydown", onKey);
+
+    document.getElementById("checkBtn")?.addEventListener("click", () => {
+      checkAll(MINI_PUZZLE, state);
+      renderBoard();
+    });
+
+    document.getElementById("revealBtn")?.addEventListener("click", () => {
+      revealAll(MINI_PUZZLE, state);
+      renderBoard();
+    });
+
+    document.getElementById("clearBtn")?.addEventListener("click", () => {
+      clearPuzzle(state);
+      elapsed = 0;
+      timerRunning = true;
+      refreshTimer();
+      renderBoard();
+    });
+
+    document.getElementById("restartBtn")?.addEventListener("click", () => {
+      state = createInitialState(MINI_PUZZLE);
+      elapsed = 0;
+      timerRunning = true;
+      refreshTimer();
+      renderBoard();
+    });
+
+    timerToggleEl?.addEventListener("click", () => {
+      timerRunning = !timerRunning;
+      refreshTimer();
+    });
+
+    modeToggleEl?.addEventListener("click", () => {
+      pencilMode = !pencilMode;
+      modeToggleEl.setAttribute("aria-pressed", String(pencilMode));
+      modeToggleEl.textContent = `Pencil: ${pencilMode ? "On" : "Off"}`;
+    });
+
+    renderClues();
+    refreshTimer();
+    renderBoard();
+  </script>
+</BaseLayout>
