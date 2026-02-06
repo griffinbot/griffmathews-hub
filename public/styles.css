@@ -252,7 +252,7 @@ body{
 /* Cards */
 .cards3{
   display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
   gap: 26px;
 }
 
@@ -275,6 +275,11 @@ body{
   color: #516079;
   line-height: 1.6;
   font-size: 16px;
+}
+
+
+.card-cta{
+  margin-top: 16px;
 }
 
 .iconbox{
@@ -462,3 +467,4 @@ body{
   .footer-grid{ grid-template-columns: 1fr; }
   .navlinks{ display:none; } /* simple mobile */
 }
+
