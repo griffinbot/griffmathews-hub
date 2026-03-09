@@ -1,314 +1,54 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import griffinLogo from "../../Griffin Logo.png";
 
-const description = "Sleek web products, automations, and interactive builds designed with Griff Mathews' brand colors and practical approach.";
+const description = "Minimal landing page for apps, updates, and about.";
 
-const featuredBuilds = [
+const sections = [
   {
-    kicker: "Web products",
-    title: "Portfolio and product sites with a stronger point of view",
-    body: "Fast, clear marketing sites and app surfaces that look intentional and still stay easy to maintain.",
+    title: "Apps",
+    body: "Useful tools, shipped clean.",
     href: "/projects",
-    cta: "View projects",
+    cta: "View apps",
     accent: "orange",
   },
   {
-    kicker: "Interactive build",
-    title: "Mini Crossword",
-    body: "A focused game experience with timers, clue logic, and just enough polish to feel playful without turning messy.",
-    href: "/crossword",
-    cta: "Play the crossword",
+    title: "Updates",
+    body: "Quick notes on what is live now.",
+    href: "/updates",
+    cta: "Read updates",
     accent: "blue",
   },
   {
-    kicker: "Shipping notes",
-    title: "Dev Branch Lab",
-    body: "A dedicated place to test ideas, UI directions, and experiments before they hit the main site.",
-    href: "/updates",
-    cta: "Read updates",
+    title: "About",
+    body: "Who I am and how I build.",
+    href: "/about",
+    cta: "About me",
     accent: "orange",
   },
 ];
-
-const buildSignals = [
-  "Lean scopes that get to launch faster",
-  "Interfaces that explain themselves quickly",
-  "Automation where repetition is costing time",
-  "Interactive moments that feel deliberate",
-];
 ---
 
-<BaseLayout title="Griff Mathews" description={description}>
-  <main id="top" class="portfolio-home">
-    <section class="portfolio-hero">
-      <div class="container portfolio-hero-grid">
-        <div class="hero-copy">
-          <h1>Products, automations, and interactive builds with a sharper edge.</h1>
-          <p class="hero-sub hero-sub-strong">
-            I build portfolio sites, web products, automations, and interactive experiments with a sharper visual
-            identity and clear user flow.
-          </p>
-
-<<<<<<< Updated upstream
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="/contact">Start a Project</a>
-            <a class="btn btn-secondary" href="/projects">See What I Build</a>
-          </div>
-=======
-      <img class="hero-logo" src="/logo.svg" alt="Griff Mathews logo" width="120" height="120" />
-
-      <h1 class="hero-title">
-        <span class="grad">Griff</span> <span class="grad2">Mathews</span>
-      </h1>
->>>>>>> Stashed changes
-
-          <div class="hero-proof">
-            <span>Web apps</span>
-            <span>Automation systems</span>
-            <span>Interactive builds</span>
-          </div>
-
-          <p class="hero-note">Open to new work. Typical reply within 1 to 2 business days.</p>
-        </div>
-
-<<<<<<< Updated upstream
-        <aside class="hero-stage" aria-label="Brand and work summary">
-          <article class="stage-card brand-card">
-            <div class="brand-card-head">
-              <img class="brand-logo" src={griffinLogo.src} alt="Griffin logo" />
-              <div>
-                <p class="stage-kicker">Brand direction</p>
-                <h2>Orange for momentum. Blue for control.</h2>
-              </div>
-=======
-    <!-- subtle corner accents like your mock -->
-    <div class="corner corner-left" aria-hidden="true"></div>
-    <div class="corner corner-right" aria-hidden="true"></div>
-  </main>
-
-  <!-- Featured App -->
-  <section class="section featured-wrap">
-    <div class="container">
-      <article class="featured-weather">
-        <div class="featured-copy">
-          <p class="eyebrow">Now Live</p>
-          <h2>Weather App</h2>
-          <p>
-            Check current conditions, hourly updates, and upcoming forecasts in a clean,
-            fast interface designed for everyday use.
-          </p>
-          <a class="btn btn-primary" href="https://weather.griffmathews.com" target="_blank" rel="noopener noreferrer">
-            Launch Weather App
-          </a>
-        </div>
-
-        <div class="featured-stats" aria-hidden="true">
-          <div class="mini-card">
-            <span class="mini-label">Design</span>
-            <strong>Simple + Fast</strong>
-          </div>
-          <div class="mini-card">
-            <span class="mini-label">Built For</span>
-            <strong>Daily Forecasts</strong>
-          </div>
-          <div class="mini-card">
-            <span class="mini-label">Experience</span>
-            <strong>Mobile Friendly</strong>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- What I Build -->
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>What I Build</h2>
-        <div class="underline"></div>
-      </div>
-
-      <div class="cards3">
-        <article class="card outline-orange">
-          <div class="iconbox orange">〈〉</div>
-          <h3>Web Apps</h3>
-          <p>Full-stack applications built with modern technologies and best practices</p>
-        </article>
-
-        <article class="card outline-blue">
-          <div class="iconbox blue">⚡</div>
-          <h3>Automations</h3>
-          <p>Workflow automations and tools that streamline processes and boost productivity</p>
-        </article>
-
-        <article class="card outline-orange">
-          <div class="iconbox orange">🎮</div>
-          <h3>Games</h3>
-          <p>Interactive experiences and games that engage and entertain users</p>
-        </article>
-
-        <article class="card outline-blue">
-          <div class="iconbox blue">☀️</div>
-          <h3>Weather App</h3>
-          <p>Live weather forecasts and location-based conditions in a fast, simple interface</p>
-          <a class="btn btn-primary card-cta" href="https://weather.griffmathews.com" target="_blank" rel="noopener noreferrer">
-            Open Weather App
-          </a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Latest Updates -->
-  <section id="updates" class="section section-muted">
-    <div class="container">
-      <div class="section-title">
-        <h2>Latest Updates</h2>
-        <div class="underline"></div>
-        <p class="section-sub">Stay up to date with new projects, releases, and documentation</p>
-      </div>
-
-      <div class="updates">
-        <article class="update highlight">
-          <div class="u-icon orange">🔔</div>
-          <div class="u-body">
-            <div class="u-meta">
-              <span class="tag orange">Announcement</span>
-              <span class="date">Feb 3, 2026</span>
->>>>>>> Stashed changes
-            </div>
-            <p class="stage-copy">
-              The site now leans into the existing palette, stronger contrast, and a more editorial layout so it reads
-              like a portfolio instead of a generic business page.
-            </p>
-          </article>
-
-          <div class="stage-stack">
-            <article class="stage-metric stage-metric-orange">
-              <span class="metric-label">Build focus</span>
-              <strong>Products people can use quickly</strong>
-            </article>
-            <article class="stage-metric stage-metric-blue">
-              <span class="metric-label">Delivery style</span>
-              <strong>Clear scope, fast iterations, polished finish</strong>
-            </article>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
+<BaseLayout title="Home" description={description}>
+  <main>
+    <section class="section">
       <div class="container">
-        <div class="section-split">
-          <div class="section-copy">
-            <p class="eyebrow">Selected Work</p>
-            <h2>Things I build when a site or product needs more personality.</h2>
-            <p class="section-sub section-sub-left">
-              The strongest projects usually sit somewhere between useful and memorable: a crisp product surface, an
-              automation that removes drag, or an interactive idea that earns attention instead of begging for it.
-            </p>
-          </div>
-
-          <a class="btn btn-secondary section-link" href="/projects">Browse all projects</a>
+        <div class="section-title">
+          <h2>Griff Mathews</h2>
+          <div class="underline"></div>
+          <p class="section-sub">Web apps. Automation. Interactive builds.</p>
         </div>
 
         <div class="featured-grid">
-          {featuredBuilds.map((build, index) => (
-            <article class={`feature-panel feature-panel-${build.accent} ${index === 0 ? "feature-panel-large" : ""}`}>
-              <div class="feature-panel-top">
-                <p class="card-kicker">{build.kicker}</p>
-                <span class="feature-index">0{index + 1}</span>
-              </div>
-              <h3>{build.title}</h3>
-              <p>{build.body}</p>
-              <a class="feature-link" href={build.href}>
-                {build.cta}
+          {sections.map((section) => (
+            <article class={`feature-panel feature-panel-${section.accent}`}>
+              <h3>{section.title}</h3>
+              <p>{section.body}</p>
+              <a class="feature-link" href={section.href}>
+                {section.cta}
                 <span aria-hidden="true">↗</span>
               </a>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-compact">
-      <div class="container">
-        <div class="signal-band">
-          {buildSignals.map((signal) => (
-            <div class="signal-pill">{signal}</div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-muted">
-      <div class="container">
-        <div class="section-split">
-          <div class="section-copy">
-            <p class="eyebrow">How I Work</p>
-            <h2>Useful systems with a cleaner visual layer.</h2>
-            <p class="section-sub section-sub-left">
-              I bias toward crisp structure, obvious calls to action, and enough motion or contrast to make the work
-              feel distinct without becoming noisy.
-            </p>
-          </div>
-        </div>
-
-        <div class="process-grid">
-          <article class="process-card">
-            <div class="process-icon process-icon-orange">01</div>
-            <h3>Sharpen the message</h3>
-            <p>Turn broad ideas into a homepage, product flow, or system people can understand in a few seconds.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="process-icon process-icon-blue">02</div>
-            <h3>Build the system</h3>
-            <p>Ship the frontend, supporting logic, and automation pieces so the experience looks good and holds up.</p>
-          </article>
-
-          <article class="process-card">
-            <div class="process-icon process-icon-orange">03</div>
-            <h3>Keep it moving</h3>
-            <p>Leave behind something easy to update, easy to ship, and ready for the next round of ideas.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="updates" class="section">
-      <div class="container updates-shell">
-        <div class="section-split">
-          <div class="section-copy">
-            <p class="eyebrow">Recent Notes</p>
-            <h2>Small launches, experiments, and site improvements.</h2>
-            <p class="section-sub section-sub-left">
-              A quick scan of what has shipped recently and how the portfolio keeps evolving.
-            </p>
-          </div>
-
-          <a class="btn btn-secondary section-link" href="/updates">View all updates</a>
-        </div>
-
-        <div class="updates-rail">
-          <article class="update-card">
-            <p class="update-card-date">Mar 9, 2026</p>
-            <h3>Dev Branch Lab</h3>
-            <p>Added a dedicated space for testing features and experiments before they reach production.</p>
-          </article>
-
-          <article class="update-card">
-            <p class="update-card-date">Feb 3, 2026</p>
-            <h3>New portfolio launch</h3>
-            <p>Rebuilt the site to make projects, updates, and experiments easier to scan and easier to trust.</p>
-          </article>
-
-          <article class="update-card">
-            <p class="update-card-date">Jan 20, 2026</p>
-            <h3>Automation tool released</h3>
-            <p>Started shipping workflow helpers that remove repetitive busywork and tighten internal processes.</p>
-          </article>
         </div>
       </div>
     </section>
