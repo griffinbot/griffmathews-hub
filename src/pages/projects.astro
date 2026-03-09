@@ -1,43 +1,45 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const apps = [
+  {
+    name: "Weather",
+    detail: "Fast local forecast.",
+    href: "https://weather.griffmathews.com",
+    cta: "Open",
+  },
+  {
+    name: "Mini Crossword",
+    detail: "Daily puzzle, short and clean.",
+    href: "/crossword",
+    cta: "Play",
+  },
+  {
+    name: "Automation Tools",
+    detail: "Internal workflows in progress.",
+    href: "/contact",
+    cta: "Ask",
+  },
+];
 ---
 
-<BaseLayout title="Projects" description="Web apps, automations, and games I build.">
+<BaseLayout title="Apps" description="Apps and tools by Griff Mathews.">
   <section class="section">
     <div class="container">
       <div class="section-title">
-        <h2>What I Build</h2>
+        <h2>Apps</h2>
         <div class="underline"></div>
-        <p class="section-sub">Web apps, automations, and games—built for speed, clarity, and real-world impact.</p>
+        <p class="section-sub">Small, useful, and polished.</p>
       </div>
 
-      <div class="cards3">
-        <article class="card outline-orange">
-          <div class="iconbox orange">〈〉</div>
-          <h3>Web Apps</h3>
-          <p>Full-stack applications built with modern technologies and best practices</p>
-        </article>
-
-        <article class="card outline-blue">
-          <div class="iconbox blue">⚡</div>
-          <h3>Automations</h3>
-          <p>Workflow automations and tools that streamline processes and boost productivity</p>
-        </article>
-
-        <article class="card outline-orange">
-          <div class="iconbox orange">🎮</div>
-          <h3>Games</h3>
-          <p>Interactive experiences and games that engage and entertain users</p>
-        </article>
-
-
-        <article class="card outline-orange">
-          <div class="iconbox orange">🧩</div>
-          <h3>Mini Crossword</h3>
-          <p>A classic clue-based mini crossword with timer, check/reveal, and pencil mode.</p>
-          <a class="btn btn-primary card-cta" href="/crossword">Play Mini Crossword</a>
-        </article>
-
+      <div class="featured-grid">
+        {apps.map((app, index) => (
+          <article class={`feature-panel ${index % 2 === 0 ? "feature-panel-orange" : "feature-panel-blue"}`}>
+            <h3>{app.name}</h3>
+            <p>{app.detail}</p>
+            <a class="feature-link" href={app.href}>{app.cta} <span aria-hidden="true">↗</span></a>
+          </article>
+        ))}
       </div>
     </div>
   </section>
