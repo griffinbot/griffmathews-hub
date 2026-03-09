@@ -1,154 +1,82 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const description = "Building innovative web apps, automations, and games that solve real problems.";
+const description = "Clear software for small teams and founders who need useful tools without extra complexity.";
 ---
 
 <BaseLayout title="Griff Mathews" description={description}>
-  <!-- Hero -->
-  <main id="top" class="hero-wrap">
-    <div class="container hero">
-      <div class="pill">
-        <span class="dot"></span>
-        Available for projects
+  <main id="top" class="home-hero">
+    <div class="container home-hero-inner">
+      <p class="eyebrow">Available for projects</p>
+      <h1>Clear software for teams that need useful tools fast.</h1>
+      <p class="hero-sub">I help small teams and founders turn messy work into simple web apps, automations, and interactive products people can actually use.</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="/contact">Get In Touch</a>
+        <a class="btn btn-secondary" href="/projects">See Projects</a>
       </div>
 
-      <h1 class="hero-title">
-        <span class="grad">Griff</span> <span class="grad2">Mathews</span>
-      </h1>
-
-      <p class="hero-sub">
-        Building innovative web apps, automations, and games that solve<br />
-        real problems
-      </p>
-
-      <a class="btn btn-primary" href="/projects">
-        View My Work <span class="chev">⌄</span>
-      </a>
+      <p class="hero-note">Open to new projects. Typical reply within 1 to 2 business days.</p>
     </div>
-
-    <!-- subtle corner accents like your mock -->
-    <div class="corner corner-left" aria-hidden="true"></div>
-    <div class="corner corner-right" aria-hidden="true"></div>
   </main>
 
-  <!-- What I Build -->
   <section id="projects" class="section">
     <div class="container">
       <div class="section-title">
         <h2>What I Build</h2>
-        <div class="underline"></div>
+        <p class="section-sub">Most projects come down to a product people can use, a workflow that should run itself, or an idea that needs a focused interactive experience.</p>
       </div>
 
       <div class="cards3">
-        <article class="card outline-orange">
-          <div class="iconbox orange">〈〉</div>
-          <h3>Web Apps</h3>
-          <p>Full-stack applications built with modern technologies and best practices</p>
+        <article class="card">
+          <div class="card-kicker">Need a product</div>
+          <h3>A simple app people can use</h3>
+          <p>Full-stack web apps with clear flows, solid engineering, and only the features that matter.</p>
         </article>
 
-        <article class="card outline-blue">
-          <div class="iconbox blue">⚡</div>
-          <h3>Automations</h3>
-          <p>Workflow automations and tools that streamline processes and boost productivity</p>
+        <article class="card">
+          <div class="card-kicker">Need less busywork</div>
+          <h3>A workflow that runs itself</h3>
+          <p>Automations and internal tools that cut repetitive steps and make day-to-day work easier to manage.</p>
         </article>
 
-        <article class="card outline-orange">
-          <div class="iconbox orange">🎮</div>
-          <h3>Games</h3>
-          <p>Interactive experiences and games that engage and entertain users</p>
+        <article class="card">
+          <div class="card-kicker">Need engagement</div>
+          <h3>An interactive idea with focus</h3>
+          <p>Games and interactive builds that feel polished, purposeful, and easy for users to understand.</p>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- Latest Updates -->
-  <section id="updates" class="section section-muted">
+  <section id="updates" class="section section-muted section-compact">
     <div class="container">
       <div class="section-title">
         <h2>Latest Updates</h2>
-        <div class="underline"></div>
-        <p class="section-sub">Stay up to date with new projects, releases, and documentation</p>
+        <p class="section-sub">A short look at recent shipping and site updates.</p>
       </div>
 
-      <div class="updates">
-        <article class="update highlight">
-          <div class="u-icon orange">🔔</div>
-          <div class="u-body">
-            <div class="u-meta">
-              <span class="tag orange">Announcement</span>
-              <span class="date">Feb 3, 2026</span>
-            </div>
-            <h3>New Portfolio Website Launch</h3>
-            <p>
-              Excited to share my new portfolio showcasing all my projects in web apps, automations, and games. Built
-              for speed and clarity.
-            </p>
+      <div class="updates-list">
+        <article class="update-row">
+          <p class="update-date">Mar 9, 2026</p>
+          <div>
+            <h3>Dev Branch Lab</h3>
+            <p>Added a dedicated space for testing features and experiments before they reach production.</p>
           </div>
         </article>
 
-        <article class="update">
-          <div class="u-icon blue">📄</div>
-          <div class="u-body">
-            <div class="u-meta">
-              <span class="tag blue">Documentation</span>
-              <span class="date">Jan 28, 2026</span>
-            </div>
-            <h3>Documentation Updates</h3>
-            <p>Added guides for setting up and deploying web applications. More tutorials coming soon.</p>
-          </div>
-        </article>
-
-        <article class="update">
-          <div class="u-icon orange">💡</div>
-          <div class="u-body">
-            <div class="u-meta">
-              <span class="tag orange">Release</span>
-              <span class="date">Jan 20, 2026</span>
-            </div>
-            <h3>New Automation Tool Released</h3>
-            <p>Released a new automation tool that helps streamline workflow processes. Early access testing open.</p>
-          </div>
-        </article>
-
-        <!-- Hidden extras to “load more” -->
-        <article class="update hidden" data-more>
-          <div class="u-icon blue">🧪</div>
-          <div class="u-body">
-            <div class="u-meta">
-              <span class="tag blue">Update</span>
-              <span class="date">Jan 14, 2026</span>
-            </div>
-            <h3>Experiment: New UI System</h3>
-            <p>Started a lightweight component system for faster prototyping across apps.</p>
-          </div>
-        </article>
-
-        <article class="update hidden" data-more>
-          <div class="u-icon orange">🚀</div>
-          <div class="u-body">
-            <div class="u-meta">
-              <span class="tag orange">Build</span>
-              <span class="date">Jan 10, 2026</span>
-            </div>
-            <h3>First App Scaffolded</h3>
-            <p>Project structure is in place — next step is shipping a public MVP under a subdomain.</p>
+        <article class="update-row">
+          <p class="update-date">Feb 3, 2026</p>
+          <div>
+            <h3>New portfolio launch</h3>
+            <p>Rebuilt the site to make projects, updates, and experiments easier to scan.</p>
           </div>
         </article>
       </div>
 
       <div class="center">
-        <button class="btn btn-outline" id="loadMore">Load More Updates</button>
+        <a class="btn btn-secondary" href="/updates">View All Updates</a>
       </div>
     </div>
   </section>
-
-  <script>
-    // Simple "Load More" behavior (reveals hidden cards)
-    const btn = document.getElementById("loadMore");
-    btn?.addEventListener("click", () => {
-      document.querySelectorAll("[data-more].hidden").forEach((el) => el.classList.remove("hidden"));
-      btn.style.display = "none";
-    });
-  </script>
 </BaseLayout>
