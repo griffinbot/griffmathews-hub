@@ -1,0 +1,234 @@
+/* =============================================
+   GRIFF MATHEWS — styles.css
+   Mobile-first, minimal, dark theme
+   ============================================= */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:       #0B0F19;
+  --card-bg:  #121826;
+  --accent:   #FF7A00;
+  --text:     #E6EDF3;
+  --muted:    #8B949E;
+  --radius:   12px;
+  --transition: 0.22s ease;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 15, 25, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.nav-brand {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  color: var(--muted);
+  transition: color var(--transition);
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  /* Subtle orange gradient on the name */
+  background: linear-gradient(135deg, var(--text) 60%, var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  margin-top: 0.75rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--muted);
+}
+
+.hero-tagline {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* ---------- Projects Section ---------- */
+.projects-section {
+  padding: 1rem 1.25rem 3rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---------- Responsive Grid ---------- */
+.grid {
+  display: grid;
+  /* Mobile: 2 columns */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.1rem;
+  }
+}
+
+/* ---------- Cards ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+
+  /* Scroll-in animation initial state (set by JS) */
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+  border-color: rgba(255, 122, 0, 0.25);
+}
+
+/* Active / tap feedback on mobile */
+.card:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 0.15rem;
+}
+
+.card-desc {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+/* ---------- Scroll-in animation ---------- */
+/* Cards start invisible/shifted; JS adds .visible to trigger transition */
+.card.anim {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease,
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.card.anim.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card.anim.visible:hover {
+  transform: translateY(-4px);
+}
+
+/* ---------- About Section ---------- */
+.about-section {
+  text-align: center;
+  padding: 1rem 1.5rem 3rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.about-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  color: var(--muted);
+  font-size: 0.8rem;
+}
