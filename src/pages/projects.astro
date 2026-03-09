@@ -1,43 +1,43 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const apps = [
+const projects = [
   {
-    name: "Weather",
-    detail: "Fast local forecast.",
+    name: "Weather App",
+    detail: "Fast local forecasts and current conditions in a clean interface.",
     href: "https://weather.griffmathews.com",
-    cta: "Open",
+    cta: "Launch",
   },
   {
     name: "Mini Crossword",
-    detail: "Daily puzzle, short and clean.",
+    detail: "A focused daily puzzle with keyboard-friendly controls.",
     href: "/crossword",
     cta: "Play",
   },
   {
     name: "Automation Tools",
-    detail: "Internal workflows in progress.",
+    detail: "Workflow tools and automations built to streamline repeatable work.",
     href: "/contact",
-    cta: "Ask",
+    cta: "Ask About",
   },
 ];
 ---
 
-<BaseLayout title="Apps" description="Apps and tools by Griff Mathews.">
+<BaseLayout title="Projects" description="Projects and tools by Griff Mathews.">
   <section class="section">
     <div class="container">
       <div class="section-title">
-        <h2>Apps</h2>
+        <h2>Projects</h2>
         <div class="underline"></div>
-        <p class="section-sub">Small, useful, and polished.</p>
+        <p class="section-sub">Web apps, automations, and games built to solve real problems.</p>
       </div>
 
       <div class="featured-grid">
-        {apps.map((app, index) => (
+        {projects.map((project, index) => (
           <article class={`feature-panel ${index % 2 === 0 ? "feature-panel-orange" : "feature-panel-blue"}`}>
-            <h3>{app.name}</h3>
-            <p>{app.detail}</p>
-            <a class="feature-link" href={app.href}>{app.cta} <span aria-hidden="true">↗</span></a>
+            <h3>{project.name}</h3>
+            <p>{project.detail}</p>
+            <a class="feature-link" href={project.href}>{project.cta} <span aria-hidden="true">↗</span></a>
           </article>
         ))}
       </div>

@@ -1,69 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const description = "Minimal landing page for apps, updates, and about.";
-
-const sections = [
-  {
-    title: "Apps",
-    body: "Useful tools, shipped clean.",
-    href: "/projects",
-    cta: "View apps",
-    accent: "orange",
-  },
-  {
-    title: "Updates",
-    body: "Quick notes on what is live now.",
-    href: "/updates",
-    cta: "Read updates",
-    accent: "blue",
-  },
-  {
-    title: "About",
-    body: "Who I am and how I build.",
-    href: "/about",
-    cta: "About me",
-    accent: "orange",
-  },
-];
+const description = "Building innovative web apps, automations, and games that solve real problems.";
 ---
 
-<BaseLayout title="Home" description={description}>
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="section-title">
-          <h2>Griff Mathews</h2>
-          <div class="underline"></div>
-          <p class="section-sub">Web apps. Automation. Interactive builds.</p>
-        </div>
-
-        <div class="featured-grid">
-          {sections.map((section) => (
-            <article class={`feature-panel feature-panel-${section.accent}`}>
-              <h3>{section.title}</h3>
-              <p>{section.body}</p>
-              <a class="feature-link" href={section.href}>
-                {section.cta}
-                <span aria-hidden="true">↗</span>
-              </a>
-            </article>
-          ))}
-        </div>
+<BaseLayout title="Griff Mathews" description={description}>
+  <main id="top" class="hero-wrap">
+    <div class="container hero">
+      <div class="pill">
+        <span class="dot"></span>
+        Available for projects
       </div>
-<<<<<<< Updated upstream
-    </section>
-  </main>
-=======
-
-      <img class="hero-logo" src="/logo.svg" alt="Griff Mathews logo" width="120" height="120" />
-
-      <img class="hero-logo" src="/logo.svg" alt="Griff Mathews logo" width="120" height="120" />
-
-      <img class="hero-logo" src="/logo.svg" alt="Griff Mathews logo" width="120" height="120" />
 
       <h1 class="hero-title">
-        <span class="grad">Griff</span> <span class="grad2">Mathews</span>
+        <span class="grad">Griff</span>
+        <span class="grad2">Mathews</span>
       </h1>
 
       <p class="hero-sub">
@@ -76,46 +27,10 @@ const sections = [
       </a>
     </div>
 
-    <!-- subtle corner accents like your mock -->
     <div class="corner corner-left" aria-hidden="true"></div>
     <div class="corner corner-right" aria-hidden="true"></div>
   </main>
 
-  <!-- Featured App -->
-  <section class="section featured-wrap">
-    <div class="container">
-      <article class="featured-weather">
-        <div class="featured-copy">
-          <p class="eyebrow">Now Live</p>
-          <h2>Weather App</h2>
-          <p>
-            Check current conditions, hourly updates, and upcoming forecasts in a clean,
-            fast interface designed for everyday use.
-          </p>
-          <a class="btn btn-primary" href="https://weather.griffmathews.com" target="_blank" rel="noopener noreferrer">
-            Launch Weather App
-          </a>
-        </div>
-
-        <div class="featured-stats" aria-hidden="true">
-          <div class="mini-card">
-            <span class="mini-label">Design</span>
-            <strong>Simple + Fast</strong>
-          </div>
-          <div class="mini-card">
-            <span class="mini-label">Built For</span>
-            <strong>Daily Forecasts</strong>
-          </div>
-          <div class="mini-card">
-            <span class="mini-label">Experience</span>
-            <strong>Mobile Friendly</strong>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- What I Build -->
   <section id="projects" class="section">
     <div class="container">
       <div class="section-title">
@@ -125,7 +40,7 @@ const sections = [
 
       <div class="cards3">
         <article class="card outline-orange">
-          <div class="iconbox orange">〈〉</div>
+          <div class="iconbox orange">{"<>"}</div>
           <h3>Web Apps</h3>
           <p>Full-stack applications built with modern technologies and best practices</p>
         </article>
@@ -141,20 +56,10 @@ const sections = [
           <h3>Games</h3>
           <p>Interactive experiences and games that engage and entertain users</p>
         </article>
-
-        <article class="card outline-blue">
-          <div class="iconbox blue">☀️</div>
-          <h3>Weather App</h3>
-          <p>Live weather forecasts and location-based conditions in a fast, simple interface</p>
-          <a class="btn btn-primary card-cta" href="https://weather.griffmathews.com" target="_blank" rel="noopener noreferrer">
-            Open Weather App
-          </a>
-        </article>
       </div>
     </div>
   </section>
 
-  <!-- Latest Updates -->
   <section id="updates" class="section section-muted">
     <div class="container">
       <div class="section-title">
@@ -173,8 +78,8 @@ const sections = [
             </div>
             <h3>New Portfolio Website Launch</h3>
             <p>
-              Excited to share my new portfolio showcasing all my projects in web apps, automations, and games. Built
-              for speed and clarity.
+              Excited to share my new portfolio showcasing all my projects in web apps, automations,
+              and games. Built for speed and clarity.
             </p>
           </div>
         </article>
@@ -203,7 +108,6 @@ const sections = [
           </div>
         </article>
 
-        <!-- Hidden extras to “load more” -->
         <article class="update hidden" data-more>
           <div class="u-icon blue">🧪</div>
           <div class="u-body">
@@ -224,24 +128,26 @@ const sections = [
               <span class="date">Jan 10, 2026</span>
             </div>
             <h3>First App Scaffolded</h3>
-            <p>Project structure is in place — next step is shipping a public MVP under a subdomain.</p>
+            <p>Project structure is in place - next step is shipping a public MVP under a subdomain.</p>
           </div>
         </article>
       </div>
 
       <div class="center">
-        <button class="btn btn-outline" id="loadMore">Load More Updates</button>
+        <button class="btn btn-outline" id="loadMore" type="button">Load More Updates</button>
       </div>
     </div>
   </section>
 
-  <script>
-    // Simple "Load More" behavior (reveals hidden cards)
-    const btn = document.getElementById("loadMore");
-    btn?.addEventListener("click", () => {
-      document.querySelectorAll("[data-more].hidden").forEach((el) => el.classList.remove("hidden"));
-      btn.style.display = "none";
+  <script type="module">
+    const button = document.getElementById("loadMore");
+
+    button?.addEventListener("click", () => {
+      document.querySelectorAll("[data-more].hidden").forEach((element) => {
+        element.classList.remove("hidden");
+      });
+
+      button.style.display = "none";
     });
   </script>
->>>>>>> Stashed changes
 </BaseLayout>

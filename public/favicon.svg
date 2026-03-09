@@ -1,48 +1,22 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>Griff Mathews</title>
+  <title>GM</title>
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fff7ed" />
-      <stop offset="100%" stop-color="#dbeafe" />
-    </linearGradient>
-    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ea580c" />
-      <stop offset="100%" stop-color="#2563eb" />
+    <linearGradient id="gm-gradient" x1="0%" x2="100%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff6a00" />
+      <stop offset="100%" stop-color="#2f6bff" />
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="18" fill="url(#bg)" />
-  <rect x="5" y="5" width="54" height="54" rx="15" fill="none" stroke="url(#accent)" stroke-width="2.5" />
-  <path d="M21 20h12c7.2 0 12 4.6 12 11.4S40.2 43 33 43h-6.5v-6.5H33c3 0 5-1.9 5-4.9S36 27 33 27h-5v16H21V20Z" fill="#ea580c" />
-  <path d="M21 23.5h7.4v19.5H21z" fill="#2563eb" opacity=".9" />
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="fav-gradient" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FF6A00"/>
-      <stop offset="1" stop-color="#2F6BFF"/>
-    </linearGradient>
-  </defs>
-  <rect x="4" y="4" width="56" height="56" rx="16" fill="#ffffff" stroke="url(#fav-gradient)" stroke-width="4"/>
-  <path d="M16 23C16 18.0294 20.0294 14 25 14H42V20H27C24.7909 20 23 21.7909 23 24V40C23 42.2091 24.7909 44 27 44H42V50H25C20.0294 50 16 45.9706 16 41V23Z" fill="url(#fav-gradient)"/>
-  <path d="M32 23C32 18.0294 36.0294 14 41 14H50V20H43C40.7909 20 39 21.7909 39 24V31H50V37H39V50H32V23Z" fill="url(#fav-gradient)"/>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+  <rect width="64" height="64" rx="16" fill="#ffffff" />
+  <text
+    x="50%"
+    y="53%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+    font-size="28"
+    font-weight="800"
+    fill="url(#gm-gradient)"
+  >
+    GM
+  </text>
 </svg>
