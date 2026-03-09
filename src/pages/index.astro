@@ -1,82 +1,212 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import griffinLogo from "../../Griffin Logo.png";
 
-const description = "Clear software for small teams and founders who need useful tools without extra complexity.";
+const description = "Sleek web products, automations, and interactive builds designed with Griff Mathews' brand colors and practical approach.";
+
+const featuredBuilds = [
+  {
+    kicker: "Web products",
+    title: "Portfolio and product sites with a stronger point of view",
+    body: "Fast, clear marketing sites and app surfaces that look intentional and still stay easy to maintain.",
+    href: "/projects",
+    cta: "View projects",
+    accent: "orange",
+  },
+  {
+    kicker: "Interactive build",
+    title: "Mini Crossword",
+    body: "A focused game experience with timers, clue logic, and just enough polish to feel playful without turning messy.",
+    href: "/crossword",
+    cta: "Play the crossword",
+    accent: "blue",
+  },
+  {
+    kicker: "Shipping notes",
+    title: "Dev Branch Lab",
+    body: "A dedicated place to test ideas, UI directions, and experiments before they hit the main site.",
+    href: "/updates",
+    cta: "Read updates",
+    accent: "orange",
+  },
+];
+
+const buildSignals = [
+  "Lean scopes that get to launch faster",
+  "Interfaces that explain themselves quickly",
+  "Automation where repetition is costing time",
+  "Interactive moments that feel deliberate",
+];
 ---
 
 <BaseLayout title="Griff Mathews" description={description}>
-  <main id="top" class="home-hero">
-    <div class="container home-hero-inner">
-      <p class="eyebrow">Available for projects</p>
-      <h1>Clear software for teams that need useful tools fast.</h1>
-      <p class="hero-sub">I help small teams and founders turn messy work into simple web apps, automations, and interactive products people can actually use.</p>
+  <main id="top" class="portfolio-home">
+    <section class="portfolio-hero">
+      <div class="container portfolio-hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow-pill">Available for selected projects</p>
+          <h1>Design-forward software that still feels practical on day one.</h1>
+          <p class="hero-sub hero-sub-strong">
+            I build portfolio sites, web products, automations, and interactive experiments with a sharper visual
+            identity and clear user flow.
+          </p>
 
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="/contact">Get In Touch</a>
-        <a class="btn btn-secondary" href="/projects">See Projects</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="/contact">Start a Project</a>
+            <a class="btn btn-secondary" href="/projects">See What I Build</a>
+          </div>
+
+          <div class="hero-proof">
+            <span>Web apps</span>
+            <span>Automation systems</span>
+            <span>Interactive builds</span>
+          </div>
+
+          <p class="hero-note">Open to new work. Typical reply within 1 to 2 business days.</p>
+        </div>
+
+        <aside class="hero-stage" aria-label="Brand and work summary">
+          <article class="stage-card brand-card">
+            <div class="brand-card-head">
+              <img class="brand-logo" src={griffinLogo.src} alt="Griffin logo" />
+              <div>
+                <p class="stage-kicker">Brand direction</p>
+                <h2>Orange for momentum. Blue for control.</h2>
+              </div>
+            </div>
+            <p class="stage-copy">
+              The site now leans into the existing palette, stronger contrast, and a more editorial layout so it reads
+              like a portfolio instead of a generic business page.
+            </p>
+          </article>
+
+          <div class="stage-stack">
+            <article class="stage-metric stage-metric-orange">
+              <span class="metric-label">Build focus</span>
+              <strong>Products people can use quickly</strong>
+            </article>
+            <article class="stage-metric stage-metric-blue">
+              <span class="metric-label">Delivery style</span>
+              <strong>Clear scope, fast iterations, polished finish</strong>
+            </article>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <p class="hero-note">Open to new projects. Typical reply within 1 to 2 business days.</p>
-    </div>
-  </main>
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-split">
+          <div class="section-copy">
+            <p class="eyebrow">Selected Work</p>
+            <h2>Things I build when a site or product needs more personality.</h2>
+            <p class="section-sub section-sub-left">
+              The strongest projects usually sit somewhere between useful and memorable: a crisp product surface, an
+              automation that removes drag, or an interactive idea that earns attention instead of begging for it.
+            </p>
+          </div>
 
-  <section id="projects" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h2>What I Build</h2>
-        <p class="section-sub">Most projects come down to a product people can use, a workflow that should run itself, or an idea that needs a focused interactive experience.</p>
+          <a class="btn btn-secondary section-link" href="/projects">Browse all projects</a>
+        </div>
+
+        <div class="featured-grid">
+          {featuredBuilds.map((build, index) => (
+            <article class={`feature-panel feature-panel-${build.accent} ${index === 0 ? "feature-panel-large" : ""}`}>
+              <div class="feature-panel-top">
+                <p class="card-kicker">{build.kicker}</p>
+                <span class="feature-index">0{index + 1}</span>
+              </div>
+              <h3>{build.title}</h3>
+              <p>{build.body}</p>
+              <a class="feature-link" href={build.href}>
+                {build.cta}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </article>
+          ))}
+        </div>
       </div>
+    </section>
 
-      <div class="cards3">
-        <article class="card">
-          <div class="card-kicker">Need a product</div>
-          <h3>A simple app people can use</h3>
-          <p>Full-stack web apps with clear flows, solid engineering, and only the features that matter.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-kicker">Need less busywork</div>
-          <h3>A workflow that runs itself</h3>
-          <p>Automations and internal tools that cut repetitive steps and make day-to-day work easier to manage.</p>
-        </article>
-
-        <article class="card">
-          <div class="card-kicker">Need engagement</div>
-          <h3>An interactive idea with focus</h3>
-          <p>Games and interactive builds that feel polished, purposeful, and easy for users to understand.</p>
-        </article>
+    <section class="section section-compact">
+      <div class="container">
+        <div class="signal-band">
+          {buildSignals.map((signal) => (
+            <div class="signal-pill">{signal}</div>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="updates" class="section section-muted section-compact">
-    <div class="container">
-      <div class="section-title">
-        <h2>Latest Updates</h2>
-        <p class="section-sub">A short look at recent shipping and site updates.</p>
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-split">
+          <div class="section-copy">
+            <p class="eyebrow">How I Work</p>
+            <h2>Useful systems with a cleaner visual layer.</h2>
+            <p class="section-sub section-sub-left">
+              I bias toward crisp structure, obvious calls to action, and enough motion or contrast to make the work
+              feel distinct without becoming noisy.
+            </p>
+          </div>
+        </div>
+
+        <div class="process-grid">
+          <article class="process-card">
+            <div class="process-icon process-icon-orange">01</div>
+            <h3>Sharpen the message</h3>
+            <p>Turn broad ideas into a homepage, product flow, or system people can understand in a few seconds.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-icon process-icon-blue">02</div>
+            <h3>Build the system</h3>
+            <p>Ship the frontend, supporting logic, and automation pieces so the experience looks good and holds up.</p>
+          </article>
+
+          <article class="process-card">
+            <div class="process-icon process-icon-orange">03</div>
+            <h3>Keep it moving</h3>
+            <p>Leave behind something easy to update, easy to ship, and ready for the next round of ideas.</p>
+          </article>
+        </div>
       </div>
+    </section>
 
-      <div class="updates-list">
-        <article class="update-row">
-          <p class="update-date">Mar 9, 2026</p>
-          <div>
+    <section id="updates" class="section">
+      <div class="container updates-shell">
+        <div class="section-split">
+          <div class="section-copy">
+            <p class="eyebrow">Recent Notes</p>
+            <h2>Small launches, experiments, and site improvements.</h2>
+            <p class="section-sub section-sub-left">
+              A quick scan of what has shipped recently and how the portfolio keeps evolving.
+            </p>
+          </div>
+
+          <a class="btn btn-secondary section-link" href="/updates">View all updates</a>
+        </div>
+
+        <div class="updates-rail">
+          <article class="update-card">
+            <p class="update-card-date">Mar 9, 2026</p>
             <h3>Dev Branch Lab</h3>
             <p>Added a dedicated space for testing features and experiments before they reach production.</p>
-          </div>
-        </article>
+          </article>
 
-        <article class="update-row">
-          <p class="update-date">Feb 3, 2026</p>
-          <div>
+          <article class="update-card">
+            <p class="update-card-date">Feb 3, 2026</p>
             <h3>New portfolio launch</h3>
-            <p>Rebuilt the site to make projects, updates, and experiments easier to scan.</p>
-          </div>
-        </article>
-      </div>
+            <p>Rebuilt the site to make projects, updates, and experiments easier to scan and easier to trust.</p>
+          </article>
 
-      <div class="center">
-        <a class="btn btn-secondary" href="/updates">View All Updates</a>
+          <article class="update-card">
+            <p class="update-card-date">Jan 20, 2026</p>
+            <h3>Automation tool released</h3>
+            <p>Started shipping workflow helpers that remove repetitive busywork and tighten internal processes.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 </BaseLayout>
